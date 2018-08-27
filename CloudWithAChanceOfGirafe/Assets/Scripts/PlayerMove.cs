@@ -23,6 +23,7 @@ public class PlayerMove : MonoBehaviour {
     //-----use Animation-----//
     public Animator anim;
 
+    AnimatorStateInfo stateInfo;
 
     //-----Ground Check--//
     private IsGroundChecker _IsGroundChecker;
@@ -36,6 +37,7 @@ public class PlayerMove : MonoBehaviour {
         IDLE,
         JUMP,
         JUMPING,
+        BOUNDING,
 
     }
     public PlayerAnimationState _PlayerAnimationState;
@@ -54,7 +56,7 @@ public class PlayerMove : MonoBehaviour {
 	void FixedUpdate () {
         Move();
         Animation();
-       
+        waitTime += 0.05f;
 	}
 
 
@@ -79,9 +81,12 @@ public class PlayerMove : MonoBehaviour {
                     myrigid.AddForce(Vector2.left * sidePower, 0);
                     break;
                 case UserIntarface.Forward.UP:
-                    if (_IsGroundChecker._isGroundCheck == true)
+                    if (_IsGroundChecker._isGroundCheck == true&&waitTime>1)
                     {
                         myrigid.AddForce(Vector2.up * junpPower);
+                        waitTime = 0;
+                        _PlayerAnimationState = PlayerAnimationState.JUMP;
+
                     }
                     break;
                 case UserIntarface.Forward.IDLE:
@@ -122,19 +127,25 @@ public class PlayerMove : MonoBehaviour {
 
     void Animation()
     {
+    
         switch (_PlayerAnimationState)
         {
             case PlayerAnimationState.IDLE:
                 anim.Play("PlayerAnimstion");
                 break;
             case PlayerAnimationState.JUMP:
-                anim.Play("PlayerJump");
+                anim.Play("PlayerJumping");
+                _PlayerAnimationState = PlayerAnimationState.JUMPING;
                 break;
             case PlayerAnimationState.JUMPING:
-                anim.Play("PlayerJumping");
 
-                if(_IsGroundChecker._isGroundCheck == true) _PlayerAnimationState = PlayerAnimationState.IDLE;
+                anim.Play("PlayerJumpLoop");
+                if(_IsGroundChecker._isGroundCheck == true&& waitTime > 1) _PlayerAnimationState = PlayerAnimationState.BOUNDING;
 
+                break;
+            case PlayerAnimationState.BOUNDING:
+               // anim.Play("PlayerJump");
+                _PlayerAnimationState = PlayerAnimationState.IDLE;
                 break;
             default:
                 break;
