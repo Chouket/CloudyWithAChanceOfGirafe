@@ -1,4 +1,4 @@
-[Ll]ibrary/
+Library/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -35,3 +35,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.log
+
+CloudWithAChanceOfGirafe/obj/
