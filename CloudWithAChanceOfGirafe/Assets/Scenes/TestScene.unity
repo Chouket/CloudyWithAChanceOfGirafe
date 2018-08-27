@@ -1540,6 +1540,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1129323178}
     m_Modifications:
+    - target: {fileID: 114804896903873572, guid: da2d227bd4fd8384284980b186733d69,
+        type: 2}
+      propertyPath: m_objects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4892188873367636, guid: da2d227bd4fd8384284980b186733d69, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2818,6 +2823,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114477815133131894, guid: 6b5d074941178c04eac273d3ad14de12,
+        type: 2}
+      propertyPath: m_objects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4978349876953792, guid: 6b5d074941178c04eac273d3ad14de12, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2855,6 +2865,12 @@ Prefab:
       propertyPath: m_spawnerGao
       value: 
       objectReference: {fileID: 860424597}
+    - target: {fileID: 114477815133131894, guid: 6b5d074941178c04eac273d3ad14de12,
+        type: 2}
+      propertyPath: m_objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a197d08253f15464581970a77e0cf8ac,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b5d074941178c04eac273d3ad14de12, type: 2}
   m_IsPrefabAsset: 0

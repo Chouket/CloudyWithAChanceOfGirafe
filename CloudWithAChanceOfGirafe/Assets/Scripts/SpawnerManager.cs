@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
 	[SerializeField]
-	List<List<GameObject>> m_objects;
+	List<FallingObjectList> m_objects;
 
 	[SerializeField]
 	GameObject m_spawnerGao;
@@ -26,6 +26,7 @@ public class SpawnerManager : MonoBehaviour
 	void Start ()
 	{
 		m_spawner = m_spawnerGao.GetComponent<Spawner>();
+		m_spawner.m_Objects = m_objects[0];
 	}
 	
 	void Update ()
