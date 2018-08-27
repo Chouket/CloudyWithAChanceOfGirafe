@@ -31,10 +31,9 @@ public class Spawner : MonoBehaviour
 		m_camera = Camera.main;
 	}
 
-	void Spawn()
+	public void Spawn()
     {
 		float size = Random.Range(m_minSize,m_maxSize);
-		Debug.Log(size);
 		int rand = Random.Range(0, m_objects.Count);
 		int rotate = Random.Range(0, 360);
 
