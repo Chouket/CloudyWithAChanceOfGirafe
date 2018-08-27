@@ -89,7 +89,7 @@ public class UserIntarface : MonoBehaviour {
         if(Input.GetMouseButtonDown(0)) InPosition = Input.mousePosition;
 
         raddian = GetAim(InPosition, Input.mousePosition);
-        mag = (InPosition - (Vector2)Input.mousePosition).magnitude;
+        mag = Mathf.Clamp((InPosition - (Vector2)Input.mousePosition).magnitude, 0, 40);
         ForwardType(raddian);
         joyStick.transform.position = Input.mousePosition;
 
