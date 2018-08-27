@@ -13,7 +13,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayButtonPressed()
     {
-        m_gameManager.Play();
+        m_gameManager.LoadGameplayScene();
     }
 
     public void QuitButtonPressed()

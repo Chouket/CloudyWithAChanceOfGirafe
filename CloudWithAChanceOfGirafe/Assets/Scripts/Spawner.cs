@@ -29,7 +29,6 @@ public class Spawner : MonoBehaviour
 	void Start()
 	{
 		m_camera = Camera.main;
-		Spawn();
 	}
 
 	void Spawn()

@@ -899,7 +899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019fec37f5cb7d84e83a354e5999e431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_gameplaySceneName: 
 --- !u!1 &2058858667
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,8 +955,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
-    m_FontStyle: 0
+    m_FontSize: 70
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 80
