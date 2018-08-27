@@ -16,7 +16,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - JoyStick
   - 
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 877865619
+    locked: 0
+  - name: JoyStick
+    uniqueID: 2793378729
     locked: 0

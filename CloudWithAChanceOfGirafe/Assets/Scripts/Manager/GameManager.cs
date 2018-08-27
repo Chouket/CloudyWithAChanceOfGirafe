@@ -31,14 +31,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        //#if UNITY_STANDALONE
-        //Screen.SetResolution(564, 960, false);
-        //Screen.fullScreen = false;
-        //#endif
-    }
-
     public void LoadMainMenuScene()
     {
         SceneManager.LoadScene("MainMenu");
@@ -57,6 +49,9 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         InGameUIManager UiManager = GameObject.FindObjectOfType<InGameUIManager>();
+        ScoreManager scoreMgr = GameObject.FindObjectOfType<ScoreManager>();
+        scoreMgr.UpdateHighScore((int)GameObject.FindObjectOfType<PlayerMove>().gameObject.transform.position.y);
+
         if (UiManager)
             UiManager.LosingUI();
     }

@@ -23,8 +23,6 @@ public class PlayerMove : MonoBehaviour {
     //-----use Animation-----//
     public Animator anim;
 
-    AnimatorStateInfo stateInfo;
-
     //-----Ground Check--//
     private IsGroundChecker _IsGroundChecker;
 
@@ -41,6 +39,9 @@ public class PlayerMove : MonoBehaviour {
 
     }
     public PlayerAnimationState _PlayerAnimationState;
+
+    //----Player Have a power up Item-----//
+    
 
 
     //---UIScript----//
@@ -62,6 +63,7 @@ public class PlayerMove : MonoBehaviour {
 
     private void Update()
     {
+        
     }
 
     void Move()
@@ -152,4 +154,6 @@ public class PlayerMove : MonoBehaviour {
         }
        
     }
+
+    
 }
