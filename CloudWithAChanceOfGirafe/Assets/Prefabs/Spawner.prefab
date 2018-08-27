@@ -57,8 +57,8 @@ MonoBehaviour:
   - {fileID: 1619372107047078, guid: 2dbfd833024e46749bfc3c6faf0098d3, type: 2}
   - {fileID: 1606185736172374, guid: b5afe1db1727d3a418cb9d3348e7aeb8, type: 2}
   - {fileID: 1029427961499232, guid: 246e5f84775124443a5952f5af27b245, type: 2}
-  m_minSize: 0.5
-  m_maxSize: 1.5
+  m_minSize: 0.25
+  m_maxSize: 1
 --- !u!212 &212478738149697796
 SpriteRenderer:
   m_ObjectHideFlags: 1

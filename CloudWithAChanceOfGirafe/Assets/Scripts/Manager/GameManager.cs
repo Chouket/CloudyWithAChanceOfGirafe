@@ -22,8 +22,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance && instance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
 
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -40,5 +44,12 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Lose()
+    {
+        InGameUIManager UiManager = GameObject.FindObjectOfType<InGameUIManager>();
+        if (UiManager)
+            UiManager.LosingUI();
     }
 }
