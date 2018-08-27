@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
 	[SerializeField]
 	float m_maxSize = 1.5f;
 
+	[SerializeField]
+	float m_spawnWidth = 5f;
 
 	Camera m_camera;
 
@@ -41,7 +43,7 @@ public class Spawner : MonoBehaviour
 		scale *= size;
 
 		int cameraSize = (int )(m_camera.orthographicSize - scale.x/2);
-		float posX = Random.value * (cameraSize * 2) - cameraSize;
+		float posX = Random.value * m_spawnWidth - (m_spawnWidth/2);
 
 		Vector3 pos = transform.position;
 		pos.x = posX;
