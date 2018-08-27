@@ -54,9 +54,12 @@ public class Spawner : MonoBehaviour
 
 		
 		GameObject gao = Instantiate(m_objects.m_fallingObjects[rand].m_gameObject, pos, Quaternion.Euler(0f,0f,rotate));
-		
-		if(m_objects.m_fallingObjects[rand].m_resize)
-		gao.transform.localScale = scale;
+
+		if (m_objects.m_fallingObjects[rand].m_resize)
+		{
+			gao.GetComponent<Rigidbody2D>().gravityScale = gao.GetComponent<Rigidbody2D>().gravityScale * size;
+			gao.transform.localScale = scale;
+		}
     }
 
 	private void Update()

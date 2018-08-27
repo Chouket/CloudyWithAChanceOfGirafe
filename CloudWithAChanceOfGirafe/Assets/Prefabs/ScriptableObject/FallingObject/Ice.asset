@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842fb0e1d9947a24ca240eb2bcc6b69b, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  m_gameObject: {fileID: 0}
+  m_gameObject: {fileID: 1606185736172374, guid: b5afe1db1727d3a418cb9d3348e7aeb8,
+    type: 2}
   m_resize: 1
   m_speed: 1
