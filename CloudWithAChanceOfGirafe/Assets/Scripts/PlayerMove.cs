@@ -20,6 +20,8 @@ public class PlayerMove : MonoBehaviour {
     [Header("Foot colloder")]
     private bool isGround;
 
+    public Animator anim;
+
     private IsGroundChecker _IsGroundChecker;
 
     void Start () {
@@ -31,6 +33,7 @@ public class PlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         Move();
+        Animation();
 	}
 
     void Move()
@@ -41,10 +44,24 @@ public class PlayerMove : MonoBehaviour {
         }
 
 
-        if (Input.GetKey(KeyCode.Space)&&_IsGroundChecker._isGroundCheck == true)
+        if (Input.GetKeyUp(KeyCode.Space)&&_IsGroundChecker._isGroundCheck == true)
         {
+            
             myrigid.AddForce(Vector2.up * junpPower);
         }
 
+    }
+
+    void Animation()
+    {
+
+        if (!Input.GetKey(KeyCode.Space))
+        {
+            anim.Play("PlayerAnimstion");
+        }
+        else
+        {
+            anim.Play("PlayerJump");
+        }
     }
 }

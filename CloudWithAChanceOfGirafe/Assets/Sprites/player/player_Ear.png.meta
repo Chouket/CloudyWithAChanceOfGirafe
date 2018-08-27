@@ -119,46 +119,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_Ear_0
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 0
-        width: 188
-        height: 180
-      alignment: 9
-      pivot: {x: 0.2459255, y: 0.19176625}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07be79c2af45f5b48aeef73491f1e281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_Ear_2
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 0
-        width: 188
-        height: 180
-      alignment: 9
-      pivot: {x: 0.2459255, y: 0.19176625}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e51e3aeb5daba9f49830bd769760941e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_Ear_3
       rect:
         serializedVersion: 2
