@@ -7,23 +7,25 @@ public class IsGroundChecker : MonoBehaviour {
     public bool _isGroundCheck;
 
 	void Update () {
-		
-	}
-    private void OnTriggerStay(Collider collision)
-    {
-        Debug.Log("OnGround!");
+        _isGroundCheck= Physics2D.Linecast(transform.position,
+            transform.position - transform.up * 1.2f);
+    }
 
-        if (collision.tag != "Player")
-        {
-            _isGroundCheck = true;
+    //private void OnTriggerStay(Collider collision)
+    //{
+    //    Debug.Log("OnGround!");
 
-        }
+    //    if (collision.tag != "Player")
+    //    {
+    //        _isGroundCheck = true;
+
+    //    }
         
-    }
+    //}
 
-    private void OnTriggerExit(Collider collision)
-    {
-        _isGroundCheck = false;
-    }
+    //private void OnTriggerExit(Collider collision)
+    //{
+    //    _isGroundCheck = false;
+    //}
 
 }

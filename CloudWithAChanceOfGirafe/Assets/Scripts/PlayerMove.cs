@@ -27,6 +27,9 @@ public class PlayerMove : MonoBehaviour {
     //-----Ground Check--//
     private IsGroundChecker _IsGroundChecker;
 
+    //-----jumpWaitTime----//
+    private float waitTime;
+    
     //----Player Animation Enum---//
     public enum PlayerAnimationState
     {
@@ -37,6 +40,10 @@ public class PlayerMove : MonoBehaviour {
     }
     public PlayerAnimationState _PlayerAnimationState;
 
+
+    //---UIScript----//
+    public UserIntarface _uiScript;
+
     void Start () {
         myrigid = GetComponent<Rigidbody2D>();
         _IsGroundChecker = GetComponentInChildren<IsGroundChecker>();
@@ -46,40 +53,69 @@ public class PlayerMove : MonoBehaviour {
 	//----use rigidBody Update--//
 	void FixedUpdate () {
         Move();
-        
+        Animation();
+       
 	}
 
 
     private void Update()
     {
-        Animation();
     }
 
     void Move()
     {
-        
-        if (Input.GetAxis("Horizontal")!=0)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal")* sidePower,0));
+            // Android
         }
-
-        //--------
-        if (Input.GetKey(KeyCode.Space))
+        else
         {
-            //-----jumping Animation----//
-            _PlayerAnimationState = PlayerAnimationState.JUMP;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if (_IsGroundChecker._isGroundCheck == true)
+            switch (_uiScript._forward)
             {
-                //------jumping-----//
-                myrigid.AddForce(Vector2.up * junpPower);
+                case UserIntarface.Forward.RIGHT:
+                    myrigid.AddForce(Vector2.right * sidePower, 0);
+                    break;
+                case UserIntarface.Forward.LEFT:
+                    myrigid.AddForce(Vector2.left * sidePower, 0);
+                    break;
+                case UserIntarface.Forward.UP:
+                    if (_IsGroundChecker._isGroundCheck == true)
+                    {
+                        myrigid.AddForce(Vector2.up * junpPower);
+                    }
+                    break;
+                case UserIntarface.Forward.IDLE:
+                    break;
+                default:
+                    break;
             }
+            
+                
+            
 
-            //-----jumping Animation----//
-            _PlayerAnimationState = PlayerAnimationState.JUMPING;
+            //if (Input.GetAxis("Horizontal") != 0)
+            //{
+            //    myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal") * sidePower, 0));
+            //}
+
+            ////--------
+            //if (Input.GetKey(KeyCode.Space))
+            //{
+            //    //-----jumping Animation----//
+            //    _PlayerAnimationState = PlayerAnimationState.JUMP;
+            //}
+
+            //if (Input.GetKeyUp(KeyCode.Space))
+            //{
+            //    if (_IsGroundChecker._isGroundCheck == true)
+            //    {
+            //        //------jumping-----//
+            //        myrigid.AddForce(Vector2.up * junpPower);
+            //    }
+
+            //    //-----jumping Animation----//
+            //    _PlayerAnimationState = PlayerAnimationState.JUMPING;
+            //}
         }
 
     }
@@ -103,13 +139,6 @@ public class PlayerMove : MonoBehaviour {
             default:
                 break;
         }
-        if (!Input.GetKey(KeyCode.Space))
-        {
-            
-        }
-        else
-        {
-           
-        }
+       
     }
 }
