@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        //#if UNITY_STANDALONE
+        //Screen.SetResolution(564, 960, false);
+        //Screen.fullScreen = false;
+        //#endif
+    }
+
     public void LoadMainMenuScene()
     {
         SceneManager.LoadScene("MainMenu");
