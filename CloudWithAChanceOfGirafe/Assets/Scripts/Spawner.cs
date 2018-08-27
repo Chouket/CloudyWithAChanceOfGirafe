@@ -45,7 +45,6 @@ public class Spawner : MonoBehaviour
 		Vector3 scale = m_objects.m_fallingObjects[rand].m_gameObject.transform.localScale;
 		scale *= size;
 
-		int cameraSize = (int )(m_camera.orthographicSize - scale.x/2);
 		float posX = Random.value * m_spawnWidth - (m_spawnWidth/2);
 
 		Vector3 pos = transform.position;
@@ -64,9 +63,9 @@ public class Spawner : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("Fire1"))
-		{
-			Spawn();
-		}
+		//if (Input.GetButtonDown("Fire1"))
+		//{
+		//	Spawn();
+		//}
 	}
 }

@@ -81,7 +81,7 @@ public class PlayerMove : MonoBehaviour {
                     myrigid.AddForce(Vector2.left * sidePower, 0);
                     break;
                 case UserIntarface.Forward.UP:
-                    if (_IsGroundChecker._isGroundCheck == true&&waitTime>1)
+                    if (_IsGroundChecker._isGroundCheck == true && waitTime > 1)
                     {
                         myrigid.AddForce(Vector2.up * junpPower);
                         waitTime = 0;
@@ -94,9 +94,9 @@ public class PlayerMove : MonoBehaviour {
                 default:
                     break;
             }
-            
-                
-            
+
+
+
 
             //if (Input.GetAxis("Horizontal") != 0)
             //{
