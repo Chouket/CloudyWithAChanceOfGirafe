@@ -1,7 +1,8 @@
 Android
 PlayerPath?
-C:/Users/masto/OneDrive/Documents/Prog/TutGameJam/CloudWithAChanceOfGirafe/Build/Mobile/Test1.apk
+C:/Users/masto/OneDrive/Documents/Prog/TutGameJam/CloudWithAChanceOfGirafe/Build/Mobile/TestButton.apk
 SceneListBegin?
+Assets/Scenes/MainMenu.unity
 Assets/Scenes/TestScene.unity
 SceneListEnd?
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
@@ -163,3 +164,6 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.GameManager
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MainMenuManager
+02fa90c8b68b7945aba62be2909c6924 Assembly-CSharp.dll:.InGameUIManager

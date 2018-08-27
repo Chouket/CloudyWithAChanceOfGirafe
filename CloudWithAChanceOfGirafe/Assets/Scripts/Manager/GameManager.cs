@@ -22,20 +22,34 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance && instance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-
-
-    [SerializeField] string m_gameplaySceneName = "";
-
-    public void Play()
+    public void LoadMainMenuScene()
     {
-        SceneManager.LoadScene(m_gameplaySceneName);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoadGameplayScene()
+    {
+        SceneManager.LoadScene("TestScene");
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Lose()
+    {
+        InGameUIManager UiManager = GameObject.FindObjectOfType<InGameUIManager>();
+        if (UiManager)
+            UiManager.LosingUI();
     }
 }
