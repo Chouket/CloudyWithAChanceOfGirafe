@@ -11,64 +11,32 @@ public class SpawnerManager : MonoBehaviour
 	GameObject m_spawnerGao;
 
 	[SerializeField]
-	int m_timeInterval = 10;
-
+	float m_minTimeInterval = 1f;
 	[SerializeField]
-	int m_spawnNumber = 3;
+	float m_maxTimeInterval = 3f;
 
 	float m_intervalStart = 0;
 
 	float m_currentTime = 0;
 
-	List<int> m_spawnTimes;
+	float m_spawnTime;
 
 	Spawner m_spawner = null;
-
-	private void Awake()
-	{
-		m_spawnTimes = new List<int>();
-	}
 
 	void Start ()
 	{
 		m_spawner = m_spawnerGao.GetComponent<Spawner>();
-		RollSpawnTimes();
 	}
 	
 	void Update ()
 	{
 		m_currentTime += Time.deltaTime;
-		if (m_currentTime >= m_intervalStart + m_timeInterval)
+		
+		if(m_currentTime >= m_intervalStart + m_spawnTime)
 		{
-			RollSpawnTimes();
+			m_spawner.Spawn();
+			m_spawnTime = Random.Range(m_minTimeInterval, m_maxTimeInterval);
 			m_intervalStart = m_currentTime;
-		}
-
-		int value = -1;
-		foreach(int i in m_spawnTimes)
-		{
-			if (m_currentTime >= m_intervalStart + i)
-			{
-				m_spawner.Spawn();
-				value = i;
-				break;
-			}
-		}
-		if (value != -1)
-			m_spawnTimes.Remove(value);
-	}
-
-	void RollSpawnTimes()
-	{
-		for (int i = 0; i < m_spawnNumber; i++)
-		{
-			int time = Random.Range(0, m_timeInterval);
-
-			while (m_spawnTimes.Contains(time))
-			{
-				time = Random.Range(0, m_timeInterval);
-			}
-			m_spawnTimes.Add(time);
 		}
 	}
 }
