@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class BackGround : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    public float DestroyHaight;
+    private Camera _camera;
+
+    private void Start()
+    {
+        _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+    }
+
+    void Update () {
+		if(_camera.transform.position.y - transform.position.y > DestroyHaight)
+        {
+            Destroy(gameObject);
+        }
 	}
 }

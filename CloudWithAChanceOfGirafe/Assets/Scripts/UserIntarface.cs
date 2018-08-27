@@ -32,12 +32,16 @@ public class UserIntarface : MonoBehaviour {
     public float raddian,mag;
 
     public Image joyStick;
-    private Vector2 localJoystickPos;
+    private Vector2 localJoystickPos,addCameraPosLocalJoystickPos;
 
     private Vector2 InPosition;
 
+    private Camera _camera;
+
 	void Start () {
+        _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         localJoystickPos = joyStick.transform.position;
+        
         if (Application.platform == RuntimePlatform.Android)
         {
             // Android
@@ -51,6 +55,8 @@ public class UserIntarface : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        addCameraPosLocalJoystickPos = localJoystickPos + (Vector2)_camera.transform.position + new Vector2(0, -3.85f);
         switch (platform)
         {
             case Platform.PC:
@@ -73,25 +79,25 @@ public class UserIntarface : MonoBehaviour {
             return;
         }
         raddian = GetAim(InPosition, touch.position);
-        mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude,0,40);
+        mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude, 0, 40);
         ForwardType(raddian);
-        joyStick.transform.position = touch.position;
+        joyStick.transform.position = localJoystickPos - (InPosition - touch.position).normalized * mag;
     }
 
     void PCUI()
     {
         if (!Input.GetMouseButton(0))
         {
-            joyStick.transform.position = localJoystickPos;
+            joyStick.transform.position = addCameraPosLocalJoystickPos;
             _forward = Forward.IDLE;
             return;
         }
-        if(Input.GetMouseButtonDown(0)) InPosition = Input.mousePosition;
+        if (Input.GetMouseButtonDown(0)) InPosition = Input.mousePosition;
 
         raddian = GetAim(InPosition, Input.mousePosition);
         mag = Mathf.Clamp((InPosition - (Vector2)Input.mousePosition).magnitude, 0, 40);
         ForwardType(raddian);
-        joyStick.transform.position = Input.mousePosition;
+        joyStick.transform.position = addCameraPosLocalJoystickPos - (InPosition - (Vector2)Input.mousePosition).normalized ;
 
     }
 
