@@ -27,6 +27,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void PlayAgain()
     {
+        Time.timeScale = 1f;
         m_gameManager.LoadGameplayScene();
     }
 

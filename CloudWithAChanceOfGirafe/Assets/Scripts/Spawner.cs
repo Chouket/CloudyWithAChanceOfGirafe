@@ -55,10 +55,10 @@ public class Spawner : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("Fire1"))
-		{
-			Spawn();
-		}
+		//if (Input.GetButtonDown("Fire1"))
+		//{
+		//	Spawn();
+		//}
 	}
 
 	void SetList(List<GameObject> list)

@@ -18,9 +18,9 @@ public class CamMove : MonoBehaviour {
         Modifiercalculate();
         Iniposition = this.transform.position;
         Vector3 ini = GetComponent<Camera>().transform.position;
-        Vector3 initFD = new Vector3(ini.x, ini.y - 7, 0);
+        Vector3 initFD = new Vector3(ini.x, ini.y - 12, 0);
         Instantiate(FreezeD,initFD,Quaternion.EulerRotation(0,0,0), this.transform);
-        Vector3 initPD = new Vector3(ini.x, ini.y - 6, 0);
+        Vector3 initPD = new Vector3(ini.x, ini.y - 10, 0);
         Instantiate(PlayerD, initPD, Quaternion.EulerRotation(0, 0, 0), this.transform);
 
     }
@@ -36,7 +36,7 @@ public class CamMove : MonoBehaviour {
 
                 Vector3 BL = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0,0, GetComponent<Camera>().nearClipPlane));
                 Vector3 TL = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0,GetComponent<Camera>().pixelHeight, GetComponent<Camera>().nearClipPlane));
-                GameObject pl = GameObject.FindGameObjectsWithTag("player")[0]; //locate player change accordingly
+                GameObject pl = GameObject.FindGameObjectsWithTag("Player")[0]; //locate player change accordingly
                 if (pl.transform.position.y > (TL-BL).y*0.7f)
                 {
                     this.transform.Translate(new Vector3(0,pl.transform.position.y- (TL - BL).y * 0.7f, 0)); //translate to player height
@@ -97,7 +97,7 @@ public class CamMove : MonoBehaviour {
     }
     void Modifiercalculate()
     {
-        Modifier = 1;//expression
+        Modifier = 0.3f;//expression
     }
 
 
