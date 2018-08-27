@@ -72,55 +72,55 @@ public class PlayerMove : MonoBehaviour {
         }
         else
         {
-            switch (_uiScript._forward)
+            //switch (_uiScript._forward)
+            //{
+            //    case UserIntarface.Forward.RIGHT:
+            //        myrigid.AddForce(Vector2.right * sidePower, 0);
+            //        break;
+            //    case UserIntarface.Forward.LEFT:
+            //        myrigid.AddForce(Vector2.left * sidePower, 0);
+            //        break;
+            //    case UserIntarface.Forward.UP:
+            //        if (_IsGroundChecker._isGroundCheck == true&&waitTime>1)
+            //        {
+            //            myrigid.AddForce(Vector2.up * junpPower);
+            //            waitTime = 0;
+            //            _PlayerAnimationState = PlayerAnimationState.JUMP;
+
+            //        }
+            //        break;
+            //    case UserIntarface.Forward.IDLE:
+            //        break;
+            //    default:
+            //        break;
+            //}
+
+
+
+
+            if (Input.GetAxis("Horizontal") != 0)
             {
-                case UserIntarface.Forward.RIGHT:
-                    myrigid.AddForce(Vector2.right * sidePower, 0);
-                    break;
-                case UserIntarface.Forward.LEFT:
-                    myrigid.AddForce(Vector2.left * sidePower, 0);
-                    break;
-                case UserIntarface.Forward.UP:
-                    if (_IsGroundChecker._isGroundCheck == true&&waitTime>1)
-                    {
-                        myrigid.AddForce(Vector2.up * junpPower);
-                        waitTime = 0;
-                        _PlayerAnimationState = PlayerAnimationState.JUMP;
-
-                    }
-                    break;
-                case UserIntarface.Forward.IDLE:
-                    break;
-                default:
-                    break;
+                myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal") * sidePower, 0));
             }
-            
-                
-            
 
-            //if (Input.GetAxis("Horizontal") != 0)
-            //{
-            //    myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal") * sidePower, 0));
-            //}
+            //--------
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //-----jumping Animation----//
+                _PlayerAnimationState = PlayerAnimationState.JUMP;
+            }
 
-            ////--------
-            //if (Input.GetKey(KeyCode.Space))
-            //{
-            //    //-----jumping Animation----//
-            //    _PlayerAnimationState = PlayerAnimationState.JUMP;
-            //}
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                if (_IsGroundChecker._isGroundCheck == true)
+                {
+                    //------jumping-----//
+                    myrigid.AddForce(Vector2.up * junpPower);
+                }
 
-            //if (Input.GetKeyUp(KeyCode.Space))
-            //{
-            //    if (_IsGroundChecker._isGroundCheck == true)
-            //    {
-            //        //------jumping-----//
-            //        myrigid.AddForce(Vector2.up * junpPower);
-            //    }
-
-            //    //-----jumping Animation----//
-            //    _PlayerAnimationState = PlayerAnimationState.JUMPING;
-            //}
+                //-----jumping Animation----//
+                _PlayerAnimationState = PlayerAnimationState.JUMPING;
+            }
         }
 
     }
