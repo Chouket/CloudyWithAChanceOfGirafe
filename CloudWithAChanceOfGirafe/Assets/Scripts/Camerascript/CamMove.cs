@@ -25,10 +25,13 @@ public class CamMove : MonoBehaviour {
             this.transform.Translate( new Vector3(0,Time.deltaTime * Modifier,0));
             try
             {
-                GameObject pl = GameObject.FindGameObjectsWithTag("player")[0]; //locate player
-                if (pl.transform.position.y > this.transform.position.y + 2)
+                
+                Vector3 BL = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0,0, GetComponent<Camera>().nearClipPlane));
+                Vector3 TL = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0,GetComponent<Camera>().pixelHeight, GetComponent<Camera>().nearClipPlane));
+                GameObject pl = GameObject.FindGameObjectsWithTag("player")[0]; //locate player change accordingly
+                if (pl.transform.position.y > (TL-BL).y*0.7f)
                 {
-                    this.transform.Translate(new Vector3(0,pl.transform.position.y-this.transform.position.y-2 , 0)); //translate to player
+                    this.transform.Translate(new Vector3(0,pl.transform.position.y- (TL - BL).y * 0.7f, 0)); //translate to player height
                 }
             }
             catch (UnityException e)
