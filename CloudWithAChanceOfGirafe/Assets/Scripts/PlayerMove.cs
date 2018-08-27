@@ -20,9 +20,22 @@ public class PlayerMove : MonoBehaviour {
     [Header("Foot colloder")]
     private bool isGround;
 
+    //-----use Animation-----//
     public Animator anim;
 
+
+    //-----Ground Check--//
     private IsGroundChecker _IsGroundChecker;
+
+    //----Player Animation Enum---//
+    public enum PlayerAnimationState
+    {
+        IDLE,
+        JUMP,
+        JUMPING,
+
+    }
+    public PlayerAnimationState _PlayerAnimationState;
 
     void Start () {
         myrigid = GetComponent<Rigidbody2D>();
@@ -30,38 +43,73 @@ public class PlayerMove : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
+	//----use rigidBody Update--//
 	void FixedUpdate () {
         Move();
-        Animation();
+        
 	}
+
+
+    private void Update()
+    {
+        Animation();
+    }
 
     void Move()
     {
+        
         if (Input.GetAxis("Horizontal")!=0)
         {
             myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal")* sidePower,0));
         }
 
-
-        if (Input.GetKeyUp(KeyCode.Space)&&_IsGroundChecker._isGroundCheck == true)
+        //--------
+        if (Input.GetKey(KeyCode.Space))
         {
-            
-            myrigid.AddForce(Vector2.up * junpPower);
+            //-----jumping Animation----//
+            _PlayerAnimationState = PlayerAnimationState.JUMP;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (_IsGroundChecker._isGroundCheck == true)
+            {
+                //------jumping-----//
+                myrigid.AddForce(Vector2.up * junpPower);
+            }
+
+            //-----jumping Animation----//
+            _PlayerAnimationState = PlayerAnimationState.JUMPING;
         }
 
     }
 
     void Animation()
     {
+        switch (_PlayerAnimationState)
+        {
+            case PlayerAnimationState.IDLE:
+                anim.Play("PlayerAnimstion");
+                break;
+            case PlayerAnimationState.JUMP:
+                anim.Play("PlayerJump");
+                break;
+            case PlayerAnimationState.JUMPING:
+                anim.Play("PlayerJumping");
 
+                if(_IsGroundChecker._isGroundCheck == true) _PlayerAnimationState = PlayerAnimationState.IDLE;
+
+                break;
+            default:
+                break;
+        }
         if (!Input.GetKey(KeyCode.Space))
         {
-            anim.Play("PlayerAnimstion");
+            
         }
         else
         {
-            anim.Play("PlayerJump");
+           
         }
     }
 }

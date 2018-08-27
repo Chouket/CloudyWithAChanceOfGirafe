@@ -12,12 +12,18 @@ public class IsGroundChecker : MonoBehaviour {
     private void OnTriggerStay(Collider collision)
     {
         Debug.Log("OnGround!");
+
         if (collision.tag != "Player")
         {
-        
+            _isGroundCheck = true;
 
         }
         
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        _isGroundCheck = false;
     }
 
 }
