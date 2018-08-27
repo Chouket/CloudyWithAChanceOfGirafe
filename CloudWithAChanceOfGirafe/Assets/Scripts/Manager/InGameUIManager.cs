@@ -32,12 +32,13 @@ public class InGameUIManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        Time.timeScale = 1f;
         m_gameManager.LoadMainMenuScene();
     }
 
     public void LosingUI()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         m_losePanel.SetActive(true);
     }
 }
