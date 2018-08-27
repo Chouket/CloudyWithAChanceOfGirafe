@@ -17,6 +17,7 @@ public class MovingObject : MonoBehaviour
 
 	Vector3 m_previousPos;
 	Rigidbody2D m_rigidbody;
+	bool m_checkForMovement = false;
 
 	private void Awake()
 	{
@@ -26,18 +27,24 @@ public class MovingObject : MonoBehaviour
 
 	private void Update()
 	{
-		//if(m_rigidbody.bodyType == RigidbodyType2D.Dynamic)
-		//{
-		//	if ((transform.position - m_previousPos).magnitude <= m_minMagnitude)
-		//		m_rigidbody.bodyType = RigidbodyType2D.Static;
-		//	else
-		//		m_previousPos = transform.position;
-		//}
+		if(m_rigidbody.bodyType == RigidbodyType2D.Dynamic)
+		{
+			if (m_checkForMovement)
+			{
+				if ((transform.position - m_previousPos).magnitude <= m_minMagnitude)
+					m_rigidbody.bodyType = RigidbodyType2D.Static;
+			}
+			m_previousPos = transform.position;
+		}
+	}
+
+	private void OnBecameVisible()
+	{
+		m_checkForMovement = true;
 	}
 
 	private void OnMouseDown()
 	{
-		Debug.Log("clicked");
 		m_tapNumber++;
 		if (m_tapNumber >= m_tapToDestroy && !m_indestructible)
 			Destroy(gameObject);
