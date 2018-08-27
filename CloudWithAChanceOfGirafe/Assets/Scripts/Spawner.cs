@@ -7,8 +7,11 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     int m_spawnerOffsetY = 0;
 
-	[SerializeField]
-	List<GameObject> m_objects;
+	FallingObjectList m_objects;
+	public FallingObjectList m_Objects
+	{
+		set { m_objects = value; }
+	}
 
 	[SerializeField]
 	float m_minSize = 0.5f;
@@ -36,10 +39,10 @@ public class Spawner : MonoBehaviour
 	public void Spawn()
     {
 		float size = Random.Range(m_minSize,m_maxSize);
-		int rand = Random.Range(0, m_objects.Count);
+		int rand = Random.Range(0, m_objects.m_fallingObjects.Count);
 		int rotate = Random.Range(0, 360);
 
-		Vector3 scale = m_objects[rand].transform.localScale;
+		Vector3 scale = m_objects.m_fallingObjects[rand].m_gameObject.transform.localScale;
 		scale *= size;
 
 		int cameraSize = (int )(m_camera.orthographicSize - scale.x/2);
@@ -50,8 +53,9 @@ public class Spawner : MonoBehaviour
 		pos.z = 0f;
 
 		
-		GameObject gao = Instantiate(m_objects[rand], pos, Quaternion.Euler(0f,0f,rotate));
+		GameObject gao = Instantiate(m_objects.m_fallingObjects[rand].m_gameObject, pos, Quaternion.Euler(0f,0f,rotate));
 		
+		if(m_objects.m_fallingObjects[rand].m_resize)
 		gao.transform.localScale = scale;
     }
 
@@ -62,9 +66,4 @@ public class Spawner : MonoBehaviour
 			Spawn();
 		}
 	}
-
-	void SetList(List<GameObject> list)
-    {
-		m_objects = list;
-    }
 }
