@@ -23,15 +23,13 @@ public class GameManager : MonoBehaviour
     {
         if (instance && instance != this)
             Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
-
-
-
-    [SerializeField] string m_gameplaySceneName = "";
 
     public void Play()
     {
-        SceneManager.LoadScene(m_gameplaySceneName);
+        SceneManager.LoadScene("TestScene");
     }
 
     public void Quit()
