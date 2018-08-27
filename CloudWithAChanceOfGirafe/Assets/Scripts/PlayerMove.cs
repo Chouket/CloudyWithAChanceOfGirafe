@@ -23,19 +23,28 @@ public class PlayerMove : MonoBehaviour {
     //-----use Animation-----//
     public Animator anim;
 
+    AnimatorStateInfo stateInfo;
 
     //-----Ground Check--//
     private IsGroundChecker _IsGroundChecker;
 
+    //-----jumpWaitTime----//
+    private float waitTime;
+    
     //----Player Animation Enum---//
     public enum PlayerAnimationState
     {
         IDLE,
         JUMP,
         JUMPING,
+        BOUNDING,
 
     }
     public PlayerAnimationState _PlayerAnimationState;
+
+
+    //---UIScript----//
+    public UserIntarface _uiScript;
 
     void Start () {
         myrigid = GetComponent<Rigidbody2D>();
@@ -46,70 +55,101 @@ public class PlayerMove : MonoBehaviour {
 	//----use rigidBody Update--//
 	void FixedUpdate () {
         Move();
-        
+        Animation();
+        waitTime += 0.05f;
 	}
 
 
     private void Update()
     {
-        Animation();
     }
 
     void Move()
     {
-        
-        if (Input.GetAxis("Horizontal")!=0)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal")* sidePower,0));
+            // Android
         }
-
-        //--------
-        if (Input.GetKey(KeyCode.Space))
+        else
         {
-            //-----jumping Animation----//
-            _PlayerAnimationState = PlayerAnimationState.JUMP;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if (_IsGroundChecker._isGroundCheck == true)
+            switch (_uiScript._forward)
             {
-                //------jumping-----//
-                myrigid.AddForce(Vector2.up * junpPower);
-            }
+                case UserIntarface.Forward.RIGHT:
+                    myrigid.AddForce(Vector2.right * sidePower, 0);
+                    break;
+                case UserIntarface.Forward.LEFT:
+                    myrigid.AddForce(Vector2.left * sidePower, 0);
+                    break;
+                case UserIntarface.Forward.UP:
+                    if (_IsGroundChecker._isGroundCheck == true&&waitTime>1)
+                    {
+                        myrigid.AddForce(Vector2.up * junpPower);
+                        waitTime = 0;
+                        _PlayerAnimationState = PlayerAnimationState.JUMP;
 
-            //-----jumping Animation----//
-            _PlayerAnimationState = PlayerAnimationState.JUMPING;
+                    }
+                    break;
+                case UserIntarface.Forward.IDLE:
+                    break;
+                default:
+                    break;
+            }
+            
+                
+            
+
+            //if (Input.GetAxis("Horizontal") != 0)
+            //{
+            //    myrigid.AddForce(new Vector2(Input.GetAxis("Horizontal") * sidePower, 0));
+            //}
+
+            ////--------
+            //if (Input.GetKey(KeyCode.Space))
+            //{
+            //    //-----jumping Animation----//
+            //    _PlayerAnimationState = PlayerAnimationState.JUMP;
+            //}
+
+            //if (Input.GetKeyUp(KeyCode.Space))
+            //{
+            //    if (_IsGroundChecker._isGroundCheck == true)
+            //    {
+            //        //------jumping-----//
+            //        myrigid.AddForce(Vector2.up * junpPower);
+            //    }
+
+            //    //-----jumping Animation----//
+            //    _PlayerAnimationState = PlayerAnimationState.JUMPING;
+            //}
         }
 
     }
 
     void Animation()
     {
+    
         switch (_PlayerAnimationState)
         {
             case PlayerAnimationState.IDLE:
                 anim.Play("PlayerAnimstion");
                 break;
             case PlayerAnimationState.JUMP:
-                anim.Play("PlayerJump");
+                anim.Play("PlayerJumping");
+                _PlayerAnimationState = PlayerAnimationState.JUMPING;
                 break;
             case PlayerAnimationState.JUMPING:
-                anim.Play("PlayerJumping");
 
-                if(_IsGroundChecker._isGroundCheck == true) _PlayerAnimationState = PlayerAnimationState.IDLE;
+                anim.Play("PlayerJumpLoop");
+                if(_IsGroundChecker._isGroundCheck == true&& waitTime > 1) _PlayerAnimationState = PlayerAnimationState.BOUNDING;
 
+                break;
+            case PlayerAnimationState.BOUNDING:
+               // anim.Play("PlayerJump");
+                _PlayerAnimationState = PlayerAnimationState.IDLE;
                 break;
             default:
                 break;
         }
-        if (!Input.GetKey(KeyCode.Space))
-        {
-            
-        }
-        else
-        {
-           
-        }
+       
     }
 }
