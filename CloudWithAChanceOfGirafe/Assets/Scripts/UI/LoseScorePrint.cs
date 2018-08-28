@@ -9,7 +9,7 @@ public class LoseScorePrint : MonoBehaviour
     public Text currHighScore;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         ScoreManager scoreMgr = GameObject.FindObjectOfType<ScoreManager>();
 
