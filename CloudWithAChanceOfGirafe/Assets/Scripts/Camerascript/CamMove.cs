@@ -25,7 +25,7 @@ public class CamMove : MonoBehaviour
         Vector3 ini = GetComponent<Camera>().transform.position;
         Vector3 initFD = new Vector3(ini.x, ini.y - 12, 0);
         Instantiate(FreezeD, initFD, Quaternion.EulerRotation(0, 0, 0), this.transform);
-        Vector3 initPD = new Vector3(ini.x, ini.y - 10, 0);
+        Vector3 initPD = new Vector3(ini.x, ini.y - 10.5f, 0);
         Instantiate(PlayerD, initPD, Quaternion.EulerRotation(0, 0, 0), this.transform);
 
     }

@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public Text currScore;
     public Text m_highScore;
 
-    public int scoreValue;
+    public int scoreValue = 0;
 
     public void Start()
     {
