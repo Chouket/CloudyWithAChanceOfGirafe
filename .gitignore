@@ -37,3 +37,5 @@ sysinfo.txt
 *.log
 
 CloudWithAChanceOfGirafe/obj/
+CloudWithAChanceOfGirafe/Assets/Scripts/UIZone.cs
+CloudWithAChanceOfGirafe/Assets/Scripts/UIZone.cs.meta

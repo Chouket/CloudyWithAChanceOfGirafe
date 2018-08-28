@@ -621,8 +621,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1441157916}
-  m_Father: {fileID: 1764245231}
-  m_RootOrder: 1
+  m_Father: {fileID: 618901927}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -650,7 +650,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: bd4694bad3f799f46a8094449a1b4f7e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -985,7 +985,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 330237979}
   m_Father: {fileID: 1764245231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1667,7 +1668,8 @@ GameObject:
   - component: {fileID: 1441157916}
   - component: {fileID: 1441157915}
   - component: {fileID: 1441157914}
-  m_Layer: 9
+  - component: {fileID: 1441157917}
+  m_Layer: 8
   m_Name: JoyStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1716,16 +1718,31 @@ RectTransform:
   m_GameObject: {fileID: 1441157913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 330237979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.77933466}
+  m_AnchorMax: {x: 0.5, y: 0.77933466}
+  m_AnchoredPosition: {x: 0, y: -5270}
   m_SizeDelta: {x: 57600, y: 18862}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!58 &1441157917
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1441157913}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000034131896, y: -229.05528}
+  serializedVersion: 2
+  m_Radius: 7444.8716
 --- !u!1 &1472765652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,7 +2049,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 618901927}
-  - {fileID: 330237979}
   m_Father: {fileID: 1906818853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2205,6 +2221,7 @@ MonoBehaviour:
   raddian: 0
   mag: 0
   joyStick: {fileID: 1441157914}
+  uIZone: {fileID: 0}
 --- !u!4 &1906818853
 Transform:
   m_ObjectHideFlags: 0

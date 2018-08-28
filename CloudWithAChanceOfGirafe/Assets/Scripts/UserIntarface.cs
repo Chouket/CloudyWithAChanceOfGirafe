@@ -29,6 +29,8 @@ public class UserIntarface : MonoBehaviour {
     }
     public StateCTRL stateCTRL;
 
+    static public bool OnUIMousePos;
+
     public float raddian,mag;
 
     public Image joyStick;
@@ -37,6 +39,8 @@ public class UserIntarface : MonoBehaviour {
     private Vector2 InPosition;
 
     private Camera _camera;
+
+    public UIZone uIZone;
 
 	void Start () {
         _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -55,39 +59,40 @@ public class UserIntarface : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        addCameraPosLocalJoystickPos = localJoystickPos + (Vector2)_camera.transform.position + new Vector2(0, -3.85f);
+       
+              addCameraPosLocalJoystickPos = localJoystickPos + (Vector2)_camera.transform.position + new Vector2(0, -3.85f);
         switch (platform)
         {
             case Platform.PC:
                 PCUI();
                 break;
             case Platform.ANDROID:
-				AndroidUI();
+                
                 break;
 
             default:
                 break;
         }
+
     }
 
+   
+    
     void AndroidUI()
     {
         Touch touch = Input.GetTouch(0);
+
         if (touch.phase == TouchPhase.Ended)
         {
-			joyStick.transform.position = addCameraPosLocalJoystickPos;
-			_forward = Forward.IDLE;
-			stateCTRL = StateCTRL.OUT;
+            stateCTRL = StateCTRL.OUT;
             return;
         }
-		if (touch.phase == TouchPhase.Moved)
-			InPosition = touch.position;
+        if (touch.phase == TouchPhase.Moved) InPosition = touch.position;
         raddian = GetAim(InPosition, touch.position);
         mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude, 0, 40);
         ForwardType(raddian);
-		joyStick.transform.position = addCameraPosLocalJoystickPos - (InPosition - (Vector2)touch.position).normalized;
-	}
+        joyStick.transform.position = localJoystickPos - (InPosition - touch.position).normalized * mag;
+    }
 
     void PCUI()
     {
