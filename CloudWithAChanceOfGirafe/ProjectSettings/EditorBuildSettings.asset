@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: cadbcb01a11f8a344b67fb445882a75b
+  - enabled: 1
+    path: Assets/Scenes/EGcutscene.unity
+    guid: 084b3f1939799db43bab09b6a0b86a07
   m_configObjects: {}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CSscript : MonoBehaviour {
 
@@ -105,7 +106,7 @@ public class CSscript : MonoBehaviour {
                 Timer += Time.deltaTime;
                 if (Timer > 2f)
                 {
-                   //calltitle
+                    SceneManager.LoadScene("MainMenu");
                 }
                 break;
 
