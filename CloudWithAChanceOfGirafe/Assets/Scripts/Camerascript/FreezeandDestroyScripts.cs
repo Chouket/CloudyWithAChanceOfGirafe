@@ -27,7 +27,7 @@ public class FreezeandDestroyScripts : MonoBehaviour {
     }
     void OnTriggerExit2D(Collider2D col)
     {
-       if (col.tag == "Falling") 
+       if (col.tag == "Falling" || col.tag == "Giraffe") 
         {
             Debug.Log("exit");
             Destroy(col.gameObject);

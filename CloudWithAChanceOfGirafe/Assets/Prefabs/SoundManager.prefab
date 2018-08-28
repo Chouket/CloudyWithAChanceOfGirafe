@@ -443,6 +443,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fc601d0624b8d9949ab2cc5f0e21f52a, type: 3}
   - {fileID: 8300000, guid: 43a220c190acd33479c8e94131871148, type: 3}
   - {fileID: 8300000, guid: e89a573e98afe7c488abc24994c8d14e, type: 3}
+  - {fileID: 8300000, guid: bd060888987664849ad52576958594cd, type: 3}
+  - {fileID: 8300000, guid: 6988d0f91edc3f64f8211f6a9ef4bbf1, type: 3}
+  - {fileID: 8300000, guid: 3e371b9ba6d2c724faf8b1a2a2872a62, type: 3}
+  - {fileID: 8300000, guid: c7d635076523f6246b501732d1868ea8, type: 3}
+  - {fileID: 8300000, guid: 093cc57c9a2086a448ee77b6edc27ee4, type: 3}
   m_soundtrack: {fileID: 82213995065154034}
   m_eventSounds:
   - {fileID: 82787091156157568}
