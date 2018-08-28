@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 228044336}
   - component: {fileID: 228044335}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,6 +201,7 @@ RectTransform:
   - {fileID: 727751271}
   - {fileID: 805050748}
   - {fileID: 731559585}
+  - {fileID: 301595248}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
