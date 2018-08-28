@@ -40,7 +40,6 @@ public class UserIntarface : MonoBehaviour {
 
     private Camera _camera;
 
-    public UIZone uIZone;
 
 	void Start () {
         _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -90,8 +89,6 @@ public class UserIntarface : MonoBehaviour {
         }
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Began) InPosition = touch.position;
-        if (touch.phase == TouchPhase.Stationary) InPosition = touch.position;
-        if (touch.phase == TouchPhase.Moved) InPosition = touch.position;
 
         raddian = GetAim(InPosition, touch.position);
         mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude, 0, 40);
