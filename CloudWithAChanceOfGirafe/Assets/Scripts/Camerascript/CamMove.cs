@@ -43,10 +43,11 @@ public class CamMove : MonoBehaviour
                 Vector3 TL = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0, GetComponent<Camera>().pixelHeight, GetComponent<Camera>().nearClipPlane));
                 GameObject pl = GameObject.FindGameObjectsWithTag("Player")[0]; //locate player change accordingly
                 m_scoreMgr.UpdateScore((int)pl.gameObject.transform.position.y);
-                if (pl.transform.position.y > (TL - BL).y * 0.7f)
-                {
-                    this.transform.Translate(new Vector3(0, pl.transform.position.y - (TL - BL).y * 0.7f, 0)); //translate to player height
-                }
+
+                //if (pl.transform.position.y > (TL - BL).y * 0.7f)
+                //{
+                //    this.transform.Translate(new Vector3(0, pl.transform.position.y - (TL - BL).y * 0.7f, 0)); //translate to player height
+                //}
             }
             catch (UnityException e)
             {
