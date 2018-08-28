@@ -20,26 +20,28 @@ public class InGameUIManager : MonoBehaviour
             Debug.LogError("No Pause panel found ...");
             return;
         }
-
-        Time.timeScale = (active ? 0f : 1f);
+		SoundManager.instance.PlayAudioClip("MenuButton");
+		Time.timeScale = (active ? 0f : 1f);
         m_pausePanel.SetActive(active);
     }
 
     public void PlayAgain()
     {
-        Time.timeScale = 1f;
+		SoundManager.instance.PlayAudioClip("MenuButton");
+		Time.timeScale = 1f;
         m_gameManager.LoadGameplayScene();
     }
 
     public void ReturnToMenu()
     {
-        Time.timeScale = 1f;
+		SoundManager.instance.PlayAudioClip("MenuButton");
+		Time.timeScale = 1f;
         m_gameManager.LoadMainMenuScene();
     }
 
     public void LosingUI()
     {
-        Time.timeScale = 0f;
+		Time.timeScale = 0f;
         m_losePanel.SetActive(true);
     }
 }

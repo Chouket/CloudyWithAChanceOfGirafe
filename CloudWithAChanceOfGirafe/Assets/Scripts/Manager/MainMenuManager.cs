@@ -13,11 +13,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayButtonPressed()
     {
-        m_gameManager.LoadGameplayScene();
+		SoundManager.instance.PlayAudioClip("MenuButton");
+		m_gameManager.LoadGameplayScene();
     }
 
     public void QuitButtonPressed()
     {
-        m_gameManager.Quit();
+		SoundManager.instance.PlayAudioClip("MenuButton");
+		m_gameManager.Quit();
     }
 }
