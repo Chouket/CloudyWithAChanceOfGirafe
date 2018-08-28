@@ -6,9 +6,11 @@ public class IsGroundChecker : MonoBehaviour {
 
     public bool _isGroundCheck;
 
+    private float waitTime = 0;
 	void Update () {
         _isGroundCheck= Physics2D.Linecast(transform.position,
-            transform.position - transform.up * 0.5f);
+            transform.position - transform.up * 1.2f);
+        waitTime += 0.01f;
     }
 
     private void OnTriggerStay(Collider collision)

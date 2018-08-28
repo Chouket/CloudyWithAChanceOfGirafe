@@ -67,7 +67,7 @@ public class UserIntarface : MonoBehaviour {
                 PCUI();
                 break;
             case Platform.ANDROID:
-                
+                AndroidUI();
                 break;
 
             default:
@@ -80,18 +80,23 @@ public class UserIntarface : MonoBehaviour {
     
     void AndroidUI()
     {
-        Touch touch = Input.GetTouch(0);
-
-        if (touch.phase == TouchPhase.Ended)
+        
+        if (Input.touchCount <1 )
         {
+            joyStick.transform.position = addCameraPosLocalJoystickPos;
+            _forward = Forward.IDLE;
             stateCTRL = StateCTRL.OUT;
             return;
         }
+        Touch touch = Input.GetTouch(0);
+        if (touch.phase == TouchPhase.Began) InPosition = touch.position;
+        if (touch.phase == TouchPhase.Stationary) InPosition = touch.position;
         if (touch.phase == TouchPhase.Moved) InPosition = touch.position;
+
         raddian = GetAim(InPosition, touch.position);
         mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude, 0, 40);
         ForwardType(raddian);
-        joyStick.transform.position = localJoystickPos - (InPosition - touch.position).normalized * mag;
+        joyStick.transform.position = addCameraPosLocalJoystickPos - (InPosition - touch.position).normalized;
     }
 
     void PCUI()
