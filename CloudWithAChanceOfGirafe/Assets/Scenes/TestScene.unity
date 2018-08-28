@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSpeed: 0
-  m_speedUpTimer: 0.5
-  speedBoost: 0.05
+  m_speedUpTimer: 0.4
+  speedBoost: 0.02
   FreezeD: {fileID: 1792842479909524, guid: 586f047579521bf41963ceba4fe7617c, type: 2}
   PlayerD: {fileID: 1656257279054268, guid: 4c0f9f6661d6b234eb3aa457a3a2ea15, type: 2}
 --- !u!1001 &1169170100
