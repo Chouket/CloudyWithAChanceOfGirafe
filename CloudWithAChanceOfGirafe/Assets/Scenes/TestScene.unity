@@ -1052,7 +1052,8 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 180
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114606449754167322, guid: be7c9fadd6cafdd428de00df2771d8de, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: be7c9fadd6cafdd428de00df2771d8de, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &860424600 stripped
