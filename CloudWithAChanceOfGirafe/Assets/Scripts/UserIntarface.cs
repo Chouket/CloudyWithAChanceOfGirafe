@@ -81,6 +81,8 @@ public class UserIntarface : MonoBehaviour {
 			stateCTRL = StateCTRL.OUT;
             return;
         }
+		if (touch.phase == TouchPhase.Moved)
+			InPosition = touch.position;
         raddian = GetAim(InPosition, touch.position);
         mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude, 0, 40);
         ForwardType(raddian);
