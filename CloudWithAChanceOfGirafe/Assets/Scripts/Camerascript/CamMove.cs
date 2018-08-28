@@ -6,13 +6,18 @@ using UnityEngine;
 public class CamMove : MonoBehaviour
 {
 
+    [SerializeField] float DefaultSpeed = 0.2f;
+    float Modifier = 1;
+
+    [SerializeField] float m_speedUpTimer = 10f;
+    float modifierTimer = 0f;
+    [SerializeField] float speedBoost = 0.05f;
+
     ScoreManager m_scoreMgr;
 
     static int Stage = 1;
     static int State = 1;
     static bool Statechange = false;
-    readonly int DefaultSpeed = 1;
-    float Modifier = 1;
     Vector3 Iniposition;
     public GameObject FreezeD;
     public GameObject PlayerD;
@@ -20,7 +25,8 @@ public class CamMove : MonoBehaviour
     void Start()
     {
         m_scoreMgr = GameObject.FindObjectOfType<ScoreManager>();
-        Modifiercalculate();
+        Modifier = DefaultSpeed;
+        modifierTimer = m_speedUpTimer;
         Iniposition = this.transform.position;
         Vector3 ini = GetComponent<Camera>().transform.position;
         Vector3 initFD = new Vector3(ini.x, ini.y - 12, 0);
@@ -33,6 +39,13 @@ public class CamMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        modifierTimer += Time.deltaTime;
+        if (modifierTimer >= m_speedUpTimer)
+        {
+            Modifiercalculate();
+            modifierTimer = 0f;
+        }
+
         if (State == 1)
         {
             this.transform.Translate(new Vector3(0, Time.deltaTime * Modifier, 0));
@@ -102,9 +115,11 @@ public class CamMove : MonoBehaviour
         Stage = 1;
 
     }
+
     void Modifiercalculate()
     {
-        Modifier = 0.3f;//expression
+        Modifier += speedBoost;
+        //Debug.Log("SpeedBoost! -> " + Modifier);
     }
 
 

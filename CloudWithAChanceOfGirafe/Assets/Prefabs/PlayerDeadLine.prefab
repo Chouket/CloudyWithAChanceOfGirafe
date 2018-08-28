@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114011652461711034}
   m_Layer: 0
   m_Name: PlayerDeadLine
-  m_TagString: Untagged
+  m_TagString: PDline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

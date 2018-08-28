@@ -1119,6 +1119,11 @@ Prefab:
       propertyPath: m_spawnWidth
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114804896903873572, guid: da2d227bd4fd8384284980b186733d69,
+        type: 2}
+      propertyPath: m_spawnerOffsetY
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2d227bd4fd8384284980b186733d69, type: 2}
   m_IsPrefabAsset: 0
@@ -1318,6 +1323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f05af3915541344bef4d80f7ad68b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultSpeed: 0
+  m_speedUpTimer: 0.5
+  speedBoost: 0.05
   FreezeD: {fileID: 1792842479909524, guid: 586f047579521bf41963ceba4fe7617c, type: 2}
   PlayerD: {fileID: 1656257279054268, guid: 4c0f9f6661d6b234eb3aa457a3a2ea15, type: 2}
 --- !u!1001 &1169170100

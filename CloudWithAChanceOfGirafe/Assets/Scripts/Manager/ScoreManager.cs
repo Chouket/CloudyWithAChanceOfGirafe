@@ -28,8 +28,6 @@ public class ScoreManager : MonoBehaviour
     {
         int highScore = GetHighScore();
 
-        Debug.Log(highScore);
-
         bool result = false;
         if (scoreValue > highScore)
         {

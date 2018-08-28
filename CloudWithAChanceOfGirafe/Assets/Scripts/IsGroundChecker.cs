@@ -7,8 +7,14 @@ public class IsGroundChecker : MonoBehaviour {
     public bool _isGroundCheck;
 
 	void Update () {
-        _isGroundCheck= Physics2D.Linecast(transform.position,
+        RaycastHit2D hit = Physics2D.Linecast(transform.position,
             transform.position - transform.up * 1.2f);
+
+        _isGroundCheck = false;
+
+        if (hit.collider)
+            if (hit.collider.tag != "FDline" && hit.collider.tag != "PDline")
+                _isGroundCheck = true;
     }
 
     //private void OnTriggerStay(Collider collision)
