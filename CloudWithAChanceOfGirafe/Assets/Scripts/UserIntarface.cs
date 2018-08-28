@@ -63,6 +63,7 @@ public class UserIntarface : MonoBehaviour {
                 PCUI();
                 break;
             case Platform.ANDROID:
+				AndroidUI();
                 break;
 
             default:

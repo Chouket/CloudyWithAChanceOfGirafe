@@ -43,8 +43,11 @@ public class MovingObject : MonoBehaviour
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
 				RaycastHit hit;
-				if (Physics.Raycast(ray,out hit))
-					if(hit.collider.tag == "Falling")
+				if (Physics.Raycast(ray, out hit))
+				{
+					if (gameObject.tag == "Giraffe")
+						SoundManager.instance.PlayAudioClip("SqueakToy");
+					else
 					{
 						int j = Random.Range(0, 3);
 						string str = "Crack" + (j + 1).ToString();
@@ -56,6 +59,7 @@ public class MovingObject : MonoBehaviour
 							Destroy(gameObject);
 						}
 					}
+				}
 			}
 		}
 	}
