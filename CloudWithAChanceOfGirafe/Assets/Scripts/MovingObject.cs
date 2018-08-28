@@ -25,9 +25,39 @@ public class MovingObject : MonoBehaviour
 		m_rigidbody = GetComponent<Rigidbody2D>();
 	}
 
+	private void Update()
+	{
+		TouchEvent();
+	}
+
 	private void OnBecameVisible()
 	{
 		m_checkForMovement = true;
+	}
+
+	private void TouchEvent()
+	{
+		for (int i = 0; i < Input.touchCount; ++i)
+		{
+			if (Input.GetTouch(i).phase == TouchPhase.Began)
+			{
+				Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+				RaycastHit hit;
+				if (Physics.Raycast(ray,out hit))
+					if(hit.collider.tag == "Falling")
+					{
+						int j = Random.Range(0, 3);
+						string str = "Crack" + (j + 1).ToString();
+						SoundManager.instance.PlayAudioClip(str);
+						m_tapNumber++;
+						if (m_tapNumber >= m_tapToDestroy && !m_indestructible)
+						{
+							SoundManager.instance.PlayAudioClip("BlockBreak");
+							Destroy(gameObject);
+						}
+					}
+			}
+		}
 	}
 
 	private void OnMouseDown()
