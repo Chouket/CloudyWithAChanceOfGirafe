@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour
         InGameUIManager UiManager = GameObject.FindObjectOfType<InGameUIManager>();
         ScoreManager scoreMgr = GameObject.FindObjectOfType<ScoreManager>();
         scoreMgr.UpdateHighScore((int)GameObject.FindObjectOfType<PlayerMove>().gameObject.transform.position.y);
-
-        if (UiManager)
+		SoundManager.instance.PlayAudioClip("Lose");
+		if (UiManager)
             UiManager.LosingUI();
     }
 }

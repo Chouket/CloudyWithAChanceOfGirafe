@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 60681714216061916}
   - component: {fileID: 50221320024493802}
   - component: {fileID: 114965574201005412}
-  m_Layer: 0
+  - component: {fileID: 114905215940792598}
+  m_Layer: 10
   m_Name: Rock
   m_TagString: Falling
   m_Icon: {fileID: 0}
@@ -177,6 +178,19 @@ PolygonCollider2D:
       - {x: -0.15333334, y: -1.9766667}
       - {x: 0.006666667, y: -1.8900001}
       - {x: 0.2, y: -1.7766668}
+--- !u!114 &114905215940792598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029427961499232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f97206465764f4f8c24c82c9b7cd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tapToDestroy: 4
+  m_indestructible: 0
 --- !u!114 &114965574201005412
 MonoBehaviour:
   m_ObjectHideFlags: 1

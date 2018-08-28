@@ -10,9 +10,9 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateScore(int currScoreValue)
     {
-        if (currScoreValue > int.Parse(currScore.text))
-        currScore.text = currScoreValue.ToString();
-    }
+		//if (currScoreValue > int.Parse(currScore.text))
+		//	currScore.text = currScoreValue.ToString();
+	}
 
     public bool UpdateHighScore(int newScore)
     {

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-	[SerializeField]
-	float m_minMagnitude = 0.1f;
+	//[SerializeField]
+	//float m_minMagnitude = 0.1f;
 
 	[SerializeField]
 	int m_tapToDestroy = 2;
@@ -27,15 +27,15 @@ public class MovingObject : MonoBehaviour
 
 	private void Update()
 	{
-		if(m_rigidbody.bodyType == RigidbodyType2D.Dynamic)
-		{
-			if (m_checkForMovement)
-			{
-				if ((transform.position - m_previousPos).magnitude <= m_minMagnitude)
-					m_rigidbody.bodyType = RigidbodyType2D.Static;
-			}
-			m_previousPos = transform.position;
-		}
+		//if(m_rigidbody.bodyType == RigidbodyType2D.Dynamic)
+		//{
+		//	if (m_checkForMovement)
+		//	{
+		//		if ((transform.position - m_previousPos).magnitude <= m_minMagnitude)
+		//			m_rigidbody.bodyType = RigidbodyType2D.Static;
+		//	}
+		//	m_previousPos = transform.position;
+		//}
 	}
 
 	private void OnBecameVisible()
@@ -45,8 +45,26 @@ public class MovingObject : MonoBehaviour
 
 	private void OnMouseDown()
 	{
+		if (gameObject.tag == "Giraffe")
+		{
+			Debug.Log("giraffe");
+			SoundManager.instance.PlayAudioClip("SqueakToy");
+		}
 		m_tapNumber++;
-		if (m_tapNumber >= m_tapToDestroy && !m_indestructible)
+		if(m_tapNumber >= m_tapToDestroy && !m_indestructible)
+		{
+			SoundManager.instance.PlayAudioClip("BlockBreak");
 			Destroy(gameObject);
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		//	if(col.collider.tag != "Player")
+		//		m_rigidbody.bodyType = RigidbodyType2D.Static;
+
+		if (col.collider.tag == "Player")
+			SoundManager.instance.PlayAudioClip("Collision");
+
 	}
 }

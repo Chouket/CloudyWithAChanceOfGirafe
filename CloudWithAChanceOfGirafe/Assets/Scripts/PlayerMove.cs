@@ -88,8 +88,8 @@ public class PlayerMove : MonoBehaviour {
                         myrigid.AddForce(Vector2.up * junpPower);
                         waitTime = 0;
                         _PlayerAnimationState = PlayerAnimationState.JUMP;
-
-                    }
+						SoundManager.instance.PlayAudioClip("Jump");
+					}
                     break;
                 case UserIntarface.Forward.IDLE:
                     break;
