@@ -76,14 +76,16 @@ public class UserIntarface : MonoBehaviour {
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Ended)
         {
-            stateCTRL = StateCTRL.OUT;
+			joyStick.transform.position = addCameraPosLocalJoystickPos;
+			_forward = Forward.IDLE;
+			stateCTRL = StateCTRL.OUT;
             return;
         }
         raddian = GetAim(InPosition, touch.position);
         mag = Mathf.Clamp((InPosition - (Vector2)touch.position).magnitude, 0, 40);
         ForwardType(raddian);
-        joyStick.transform.position = localJoystickPos - (InPosition - touch.position).normalized * mag;
-    }
+		joyStick.transform.position = addCameraPosLocalJoystickPos - (InPosition - (Vector2)touch.position).normalized;
+	}
 
     void PCUI()
     {
